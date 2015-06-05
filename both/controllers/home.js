@@ -1,0 +1,4 @@
+HomeController = AppController.extend({
+  data: {
+  }
+});
