@@ -3,9 +3,6 @@ Template.commentList.rendered = function() {
 };
 
 Template.commentList.helpers({
-  // comments: function() {
-  //   return Comments.find({});
-  // }
 });
 
 Template.commentList.events({
@@ -13,14 +10,12 @@ Template.commentList.events({
     e.preventDefault();
 
     var content = $(e.target).find('[name=comment]');
-    var model = {
-      postId: '',
+    var commentModel = {
+      postId: this.model.post._id,
       content: content.val()
     };
 
-    console.log('model', model);
-
-    Meteor.call('Comments.Insert', model, function(error, commentId) {
+    Meteor.call('Comments.Insert', commentModel, function(error, commentId) {
       if (error){
         throwError(error.reason);
       } else {
