@@ -1,0 +1,18 @@
+<template name="postDetail">
+  <div class="video video-item">
+    <div class="left">
+      <div class="title">
+        <h4>{{title}}</h4>
+        <!-- <small>Donec sed odio dui. Nullam quis risus eget urna mollis</small> -->
+      </div>
+      <div class="v-content">
+        <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/xIPl913UUFU"
+          frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="right">
+      {{> commentList model=commentModel}}
+    </div>
+  </div>
+</template>
