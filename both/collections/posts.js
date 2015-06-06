@@ -42,27 +42,27 @@ Meteor.methods({
     }
     console.log(errors);
 
-    // var postWithSameLink = Posts.findOne({url: postAttributes.url});
-    // if (postWithSameLink) {
-    //   return {
-    //     postExists: true,
-    //     _id: postWithSameLink._id
-    //   };
-    // }
+    var postWithSameLink = Posts.findOne({url: postAttributes.url});
+    if (postWithSameLink) {
+      return {
+        postExists: true,
+        _id: postWithSameLink._id
+      };
+    }
 
-    // var user = Meteor.user();
-    // var post = _.extend(postAttributes, {
-    //   userId: user._id,
-    //   username: user.username,
-    //   postedDate: new Date(),
-    //   url: getYoutubeId(postAttributes.url),
-    //   title: postAttributes.title,
-    // });
+    var user = Meteor.user();
+    var post = _.extend(postAttributes, {
+      userId: user._id,
+      username: user.username,
+      postedDate: new Date(),
+      url: getYoutubeId(postAttributes.url),
+      title: postAttributes.title,
+    });
 
-    // var postId = Posts.insert(post);
+    var postId = Posts.insert(post);
 
-    // return {
-    //   _id: postId
-    // };
+    return {
+      _id: postId
+    };
   }
 });

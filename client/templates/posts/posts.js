@@ -30,12 +30,12 @@ Template.posts.events({
         throw new (error.reason);
       }
 
-      // if (result.postExists) {
-      //   throw new ('This link has already been posted');
-      // }
+      if (result.postExists) {
+        throw new ('This link has already been posted');
+      }
 
       console.log('Result: ' + result);
-      // Router.go('home');
+      Router.go('home');
     });
   }
 });
