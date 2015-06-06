@@ -1,7 +1,6 @@
 HomeController = AppController.extend({
   data: {
-    // comments: Comments.find({}, {sort: {'createdAt': -1}, limit: 3}),
-    posts: Posts.find({})
+    posts: Posts.find({}, {sort: {'postedDate': -1}})
   },
   waitOn: function() {
     return this.subscribe('comments') && this.subscribe('posts');

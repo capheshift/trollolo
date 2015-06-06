@@ -25,32 +25,16 @@ Template.posts.events({
       title: event.target.title.value,
     };
 
-    var errors = validatePost(post);
-    // if (Session.set('anything', {})) {
-    //   console.log('set okie');
-    // } else {
-    //   console.log('set not okie');
-    // }
-
-    // if (!errors.title) {
-    //   errors.title = "Please write some content";
-    //   return Session.set('commentSubmitErrors', errors);
-    // }
-
-    if (!errors) {
-      console.log('xyz');
-      return false;
-    }
-
     Meteor.call('postInsert', post, function (error, result) {
       if (error) {
-        console.log('throwError');
+        throw new (error.reason);
       }
 
       if (result.postExists) {
-        console.log('postExists');
+        throw new ('This link has already been posted');
       }
-      console.log(result);
+
+      console.log('Result: ' + result);
       Router.go('home');
     });
   }

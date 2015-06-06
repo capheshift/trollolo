@@ -16,15 +16,32 @@ validatePost = function (post) {
   }
 
   if (!post.url) {
-    errors.url = "Link youtube đâu má.";
+    errors.url = "Thiếu link youtube rồi má ơi.";
   }
 
   return errors;
 }
 
+getYoutubeId = function (url) {
+  var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+
+  if (match && match[2].length == 11) {
+    return match[2];
+  } else {
+    return 'error';
+  }
+}
+
 
 Meteor.methods({
   postInsert: function (postAttributes) {
+    var errors = validatePost(postAttributes);
+    if (!errors) {
+      return errors;
+    }
+    console.log(errors);
+
     var postWithSameLink = Posts.findOne({url: postAttributes.url});
     if (postWithSameLink) {
       return {
@@ -38,7 +55,7 @@ Meteor.methods({
       userId: user._id,
       username: user.username,
       postedDate: new Date(),
-      url: postAttributes.url,
+      url: getYoutubeId(postAttributes.url),
       title: postAttributes.title,
     });
 
