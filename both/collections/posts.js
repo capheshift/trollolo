@@ -16,36 +16,53 @@ validatePost = function (post) {
   }
 
   if (!post.url) {
-    errors.url = "Link youtube đâu má.";
+    errors.url = "Thiếu link youtube rồi má ơi.";
   }
 
   return errors;
 }
 
+getYoutubeId = function (url) {
+  var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  var match = url.match(regExp);
+
+  if (match && match[2].length == 11) {
+    return match[2];
+  } else {
+    return 'error';
+  }
+}
+
 
 Meteor.methods({
   postInsert: function (postAttributes) {
-    var postWithSameLink = Posts.findOne({url: postAttributes.url});
-    if (postWithSameLink) {
-      return {
-        postExists: true,
-        _id: postWithSameLink._id
-      };
+    var errors = validatePost(postAttributes);
+    if (!errors) {
+      return errors;
     }
+    console.log(errors);
 
-    var user = Meteor.user();
-    var post = _.extend(postAttributes, {
-      userId: user._id,
-      username: user.username,
-      postedDate: new Date(),
-      url: postAttributes.url,
-      title: postAttributes.title,
-    });
+    // var postWithSameLink = Posts.findOne({url: postAttributes.url});
+    // if (postWithSameLink) {
+    //   return {
+    //     postExists: true,
+    //     _id: postWithSameLink._id
+    //   };
+    // }
 
-    var postId = Posts.insert(post);
+    // var user = Meteor.user();
+    // var post = _.extend(postAttributes, {
+    //   userId: user._id,
+    //   username: user.username,
+    //   postedDate: new Date(),
+    //   url: getYoutubeId(postAttributes.url),
+    //   title: postAttributes.title,
+    // });
 
-    return {
-      _id: postId
-    };
+    // var postId = Posts.insert(post);
+
+    // return {
+    //   _id: postId
+    // };
   }
 });
