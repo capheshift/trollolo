@@ -5,9 +5,13 @@
     </div>
 
     <ul class="list-group">
-      {{#each items}}
+      <!-- {{#each items}}
         <li class="list-group-item">{{ name }}
           <span class="label label-default">{{ rating }}</span>
+        </li>
+      {{/each}} -->
+      {{#each items}}
+        <li class="list-group-item">{{ content }}
         </li>
       {{/each}}
     </ul>
