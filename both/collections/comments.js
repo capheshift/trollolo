@@ -24,6 +24,7 @@ Meteor.methods({
 
     // if (!post)
     //   throw new Meteor.Error('invalid-comment', 'You must comment on a post');
+    // console.log('user', user);
 
     commentModel = _.extend(commentModel, {
       userId: user._id
