@@ -5,18 +5,29 @@
         <div class="at-form">
           <div class="at-title"><h3>ĐĂNG VIDEO</h3></div>
           <div class="at-error alert alert-danger">
-            <p>Error about any problem</p>
+            <p>{{errorMessage 'title'}}</p>
           </div>
           <div class="at-pwd-form">
             <form class="new-post">
             <fieldset>
-
+              <div class="at-input form-group">
+                <label class="control-label" for="at-field-title">
+                  Title
+                </label>
+                <input type="text" class="form-control" id="at-field-title" name="title" placeholder="Đặt tên câu view" />
+                <span class="help-block">Hien cai gi do ra day di pa.</span>
+              </div>
             </fieldset>
-              Title<br />
-              <input type="text" name="youtube" value="" /><br />
-              Youtube Link<br />
-              <input type="text" name="title" value="" /><br /><br />
-              <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" id="at-btn">Submit</button>
+            <fieldset>
+              <div class="at-input form-group">
+                <label class="control-label" for="at-field-youtube">
+                  Youtube
+                </label>
+                <input type="text" class="form-control" id="at-field-youtube" name="youtube" placeholder="Paste link youtube vào đây đi thím" />
+                <span class="help-block hide">Hien cai gi do ra day di ma</span>
+              </div>
+            </fieldset>
+            <button type="submit" class="at-btn submit btn btn-lg btn-block btn-default" id="at-btn">Submit</button>
             </form>
           </div>
         </div>

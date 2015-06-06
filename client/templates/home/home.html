@@ -8,12 +8,14 @@
       <div class="video">
         <div class="left">
           <div class="title">
-            <h4>Top aligned media</h4>
+          {{#each posts}}
+            <h4>{{title}} - {{url}}</h4>
             <small>Donec sed odio dui. Nullam quis risus eget urna mollis</small>
+          {{/each}}
           </div>
           <div class="v-content">
             <iframe width="560" height="315"
-              src="https://www.youtube.com/embed/2lIV1ult95I"
+              src=""
               frameborder="0" allowfullscreen></iframe>
           </div>
         </div>
