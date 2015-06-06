@@ -9,3 +9,7 @@ PostsController = AppController.extend({
     Meta.setTitle('Đăng Video');
   }
 });
+
+PostsController.events({
+
+});
