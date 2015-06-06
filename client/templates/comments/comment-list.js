@@ -20,7 +20,7 @@ Template.commentList.events({
 
     console.log('model', model);
 
-    Meteor.call('commentInsert', model, function(error, commentId) {
+    Meteor.call('Comments.Insert', model, function(error, commentId) {
       if (error){
         throwError(error.reason);
       } else {
