@@ -22,7 +22,7 @@
                 <i class="fa fa-user"></i> {{ currentUser.profile.name }} <i class="fa fa-caret-down"></i>
               </a>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="#" data-action="logout">
+                <li><a href="{{ pathFor 'posts' }}">
                   <!-- <i class="fa fa-lock"></i> -->Đăng video</a></li>
                 <li><a href="#" data-action="logout">
                   <!-- <i class="fa fa-lock"></i> -->Thông tin của bạn</a></li>
@@ -40,7 +40,8 @@
 
         <ul class="nav navbar-nav navbar-right">
           <li class="{{ isActiveRoute regex='home' }}"><a href="{{ pathFor 'home' }}"><i class="fa fa-home"></i> Trang chủ</a></li>
-          <li class="{{ isActiveRoute regex='dashboard' }}"><a href="{{ pathFor 'dashboard' }}"><i class="fa fa-gear"></i> Đăng video</a></li>
+          <li class="{{ isActiveRoute regex='dashboard' }}"><a href="{{ pathFor 'dashboard' }}"><i class="fa fa-gear"></i> Dashboard</a></li>
+          <li class="{{ isActiveRoute regex='posts' }}"><a href="{{ pathFor 'posts' }}"><i class="fa fa-gear"></i> Đăng video</a></li>
         </ul>
       </div>
 
