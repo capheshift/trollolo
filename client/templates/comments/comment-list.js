@@ -1,0 +1,3 @@
+Template.commentList.rendered = function() {
+
+};
